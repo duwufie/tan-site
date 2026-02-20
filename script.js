@@ -19,7 +19,7 @@ const yesMessages = [
     "Come on, be my mine!",
     "You know you want to!",
     "I'll be your best doggo!",
-    "Will sing your fav lullaby?",
+    "Will sing your fav lullaby forever?",
     "Tum todo na dil mera 💔!",
     "Haan bol nahi thappad padega!",
     "Will gib u infinite kissis!",
