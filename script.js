@@ -6,7 +6,7 @@ const messages = [
     "Think again!",
     "Come on, say yes!",
     "Don't be shy!",
-    "I'll be the best Valentine!",
+    "I'll be your best boyfiee everr!",
     "Pretty please?",
     "You know you want to!",
     "Just click yes!",
