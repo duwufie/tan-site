@@ -29,49 +29,7 @@ const yesBtn = document.getElementById('yes');
 const noBtn = document.getElementById('no');
 const celebration = document.getElementById('celebration');
 const messageEl = document.getElementById('message');
-const collageOverlay = document.getElementById('collage-overlay');
-const collageGrid = document.getElementById('collage-grid');
 const birthdaySong = document.getElementById('birthdaySong');
-let collageBuilt = false;
-
-const collageImages = [
-    'assets/photo1.jpeg',
-    'assets/photo2.jpeg',
-    'assets/photo3.jpeg',
-    'assets/photo4.jpeg',
-    'assets/photo5.jpeg',
-    'assets/photo6.jpeg'
-];
-
-function buildCollage() {
-    collageGrid.innerHTML = '';
-    collageImages.forEach((src, index) => {
-        const img = document.createElement('img');
-        img.src = src;
-        img.alt = `Memory ${index + 1}`;
-        img.loading = 'lazy';
-        img.style.transform = `rotate(${Math.random() * 14 - 7}deg)`;
-        img.onerror = () => {
-            img.style.display = 'none';
-        };
-        collageGrid.appendChild(img);
-    });
-    collageBuilt = true;
-}
-
-function showCollage() {
-    if (!collageBuilt) {
-        buildCollage();
-    }
-    collageOverlay.classList.add('visible');
-    if (birthdaySong) {
-        birthdaySong.currentTime = 0;
-        birthdaySong.volume = 0.85;
-        birthdaySong.play().catch(() => {
-            console.warn('Autoplay prevented. Tap play on the page if needed.');
-        });
-    }
-}
 
 function moveNoButton() {
     noClicks++;
@@ -105,7 +63,6 @@ function moveNoButton() {
         yesBtn.style.display = 'none';
         messageEl.style.display = 'none';
         celebration.style.display = 'block';
-        showCollage();
         confetti({
             particleCount: 100,
             spread: 70,
@@ -127,7 +84,13 @@ yesBtn.addEventListener('click', () => {
     messageEl.style.display = 'none';
     // Show celebration
     celebration.style.display = 'block';
-    showCollage();
+    if (birthdaySong && yesBtn.textContent.trim().toUpperCase() === 'HAAAN') {
+        birthdaySong.currentTime = 0;
+        birthdaySong.volume = 0.85;
+        birthdaySong.play().catch(() => {
+            console.warn('Autoplay prevented; user interaction is required to play the song.');
+        });
+    }
     // Trigger confetti
     confetti({
         particleCount: 100,
